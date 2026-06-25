@@ -1,0 +1,42 @@
+{
+  "name": "ksp-crime-intelligence-platform",
+  "description": "Comprehensive crime intelligence platform leveraging Catalyst services for FIR management, suspect profiling, network analysis, and predictive policing",
+  "version": "1.0.0",
+  "type": "project",
+  "catalyst": {
+    "services": [
+      "datastore",
+      "cache",
+      "stratus",
+      "functions",
+      "circuits",
+      "signals",
+      "search",
+      "ai"
+    ],
+    "regions": ["default"],
+    "features": {
+      "authentication": true,
+      "rbac": true,
+      "realTimeUpdates": true,
+      "fileStorage": true,
+      "eventDriven": true
+    }
+  },
+  "deployment": {
+    "backend": {
+      "runtime": "python3.11",
+      "platform": "appsail",
+      "entrypoint": "backend/app/main.py"
+    },
+    "frontend": {
+      "runtime": "nodejs18",
+      "buildTool": "vite",
+      "outputDir": "dist"
+    },
+    "functions": {
+      "runtime": "python3.11",
+      "timeout": 300
+    }
+  }
+}
