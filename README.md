@@ -289,35 +289,39 @@ Recognize:
 * Potential serial offender activity
 
 ---
-
+```
 # 🏗️ System Architecture
 
-```text
-Crime Records Sources
-        │
-        ▼
-Data Integration Layer
-        │
-        ▼
-Data Cleaning & Validation
-        │
-        ▼
-Central Crime Intelligence Repository
-        │
- ┌────────────┬────────────┬────────────┐
- │            │            │
- ▼            ▼            ▼
-GIS Engine  AI Engine  Network Engine
- │            │            │
- └────────────┴────────────┘
-        │
-        ▼
-Intelligence Dashboard Layer
-        │
-        ▼
-SCRB & Law Enforcement Agencies
+                   ┌──────────────────────────┐
+                   │ Karnataka Police Data    │
+                   │ FIR • Victims • Crime    │
+                   │ CDR • Finance • GIS      │
+                   └─────────────┬────────────┘
+                                 │
+                     Data Ingestion Pipeline
+                                 │
+        ┌────────────────────────┼────────────────────────┐
+        │                        │                        │
+ Structured DB             Graph Database          Feature Store
+(PostgreSQL)                 (Neo4j)                (Redis)
+        │                        │                        │
+        └──────────────┬─────────┴─────────────┬──────────┘
+                       │                       │
+              AI Intelligence Engine     Analytics Engine
+                       │                       │
+         ┌─────────────┼───────────────────────┼─────────────┐
+         │             │                       │             │
+ Conversational AI  Pattern Mining      ML Prediction   Explainable AI
+         │             │                       │             │
+         └─────────────┼───────────────────────┼─────────────┘
+                       │
+          Intelligence API Gateway (FastAPI)
+                       │
+     ┌─────────────────┼────────────────────┐
+     │                 │                    │
+ Investigator      Analyst Portal     Admin Portal
+ Dashboard          Dashboard          Management
 ```
-
 ---
 
 # 📈 Dashboard Modules
