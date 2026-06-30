@@ -62,9 +62,8 @@ CrimeLens AI combines AI, analytics, and cloud technologies to help investigator
  Dashboard          Dashboard          Management
 ```
 
-# Folder Architecture
 
-
+# Folder Architecture:
 ksp-crime-intelligence-platform/
 ├── catalyst.json                      # Catalyst project manifest (required)
 ├── .env.example
@@ -159,6 +158,63 @@ ksp-crime-intelligence-platform/
     ├── integration/
     └── e2e/
 
+# phase 0 architecture:
+ksp-crime-intelligence-platform/
+├── catalyst.json
+├── .env.example
+├── README.md
+│
+├── docs/
+│   └── data-model.md                  # edge-table design doc
+│
+└── backend/
+    ├── requirements.txt
+    ├── appsail.config.json
+    │
+    └── app/
+        ├── __init__.py
+        ├── main.py                    # FastAPI entrypoint
+        │
+        ├── core/
+        │   ├── __init__.py
+        │   ├── config.py              # env settings
+        │   ├── catalyst_client.py     # Catalyst SDK init
+        │   └── security.py            # JWT + password hashing
+        │
+        ├── auth/
+        │   ├── __init__.py
+        │   ├── roles.py                # RBAC role/permission table
+        │   └── dependencies.py         # require_permission / require_role
+        │
+        ├── models/
+        │   ├── __init__.py
+        │   ├── enums.py                # CaseStatus, CrimeCategory, GraphNodeType, GraphEdgeType
+        │   ├── location.py             # Location
+        │   ├── person.py               # Suspect, Victim
+        │   ├── fir.py                  # FIR, Incident
+        │   └── graph.py                # GraphNode, GraphEdge
+        │
+        ├── schemas/
+        │   ├── __init__.py
+        │   └── auth.py                 # TokenResponse
+        │
+        ├── data_access/
+        │   ├── __init__.py
+        │   ├── datastore_repo.py       # generic CRUD over Catalyst Data Store
+        │   ├── graph_repo.py           # edge-table adjacency queries
+        │   ├── cache_repo.py           # Catalyst Cache wrapper
+        │   └── stratus_repo.py         # evidence file storage wrapper
+        │
+        └── api/
+            ├── __init__.py
+            └── v1/
+                ├── __init__.py
+                ├── router.py            # aggregates all endpoint routers
+                └── endpoints/
+                    ├── __init__.py
+                    ├── health.py        # /health
+                    ├── auth.py          # /auth/login
+                    └── fir.py           # /fir CRUD
 # 🛠️ Tech Stack
 
 ### Frontend

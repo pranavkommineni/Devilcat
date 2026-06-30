@@ -1,42 +1,25 @@
 {
-  "name": "ksp-crime-intelligence-platform",
-  "description": "Comprehensive crime intelligence platform leveraging Catalyst services for FIR management, suspect profiling, network analysis, and predictive policing",
-  "version": "1.0.0",
-  "type": "project",
-  "catalyst": {
-    "services": [
-      "datastore",
-      "cache",
-      "stratus",
-      "functions",
-      "circuits",
-      "signals",
-      "search",
-      "ai"
-    ],
-    "regions": ["default"],
-    "features": {
-      "authentication": true,
-      "rbac": true,
-      "realTimeUpdates": true,
-      "fileStorage": true,
-      "eventDriven": true
-    }
-  },
-  "deployment": {
-    "backend": {
-      "runtime": "python3.11",
-      "platform": "appsail",
-      "entrypoint": "backend/app/main.py"
-    },
-    "frontend": {
-      "runtime": "nodejs18",
-      "buildTool": "vite",
-      "outputDir": "dist"
-    },
-    "functions": {
-      "runtime": "python3.11",
-      "timeout": 300
-    }
-  }
+  "project_name": "ksp-crime-intelligence-platform",
+  "stack-blocks": [
+    { "id": "investigator-portal", "stack_name": "investigator-portal", "stack_type": "appsail", "source": "client/investigator-portal" },
+    { "id": "analyst-portal", "stack_name": "analyst-portal", "stack_type": "appsail", "source": "client/analyst-portal" },
+    { "id": "admin-portal", "stack_name": "admin-portal", "stack_type": "appsail", "source": "client/admin-portal" },
+    { "id": "crimelens-api", "stack_name": "crimelens-api", "stack_type": "appsail", "source": "backend" }
+  ],
+  "functions": [
+    { "id": "fir_ingestion_trigger", "type": "event", "source": "functions/fir_ingestion_trigger" },
+    { "id": "ocr_document_intel", "type": "event", "source": "functions/ocr_document_intel" },
+    { "id": "anomaly_alert_dispatcher", "type": "event", "source": "functions/anomaly_alert_dispatcher" },
+    { "id": "scheduled_intel_reports", "type": "cron", "source": "functions/scheduled_intel_reports" },
+    { "id": "circuits_workflows", "type": "circuit", "source": "functions/circuits_workflows" }
+  ],
+  "data_store": { "enabled": true },
+  "cache": { "enabled": true },
+  "stratus": { "enabled": true },
+  "authentication": { "enabled": true },
+  "search": { "enabled": true },
+  "api_gateway": { "enabled": true, "config": "infra/api-gateway" },
+  "signals": { "enabled": true, "config": "infra/signals" },
+  "job_scheduling": { "enabled": true },
+  "environments": ["Development", "Production"]
 }
