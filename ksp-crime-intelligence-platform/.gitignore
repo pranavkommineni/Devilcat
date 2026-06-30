@@ -1,105 +1,149 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
+# ==========================
+# Dependencies
+# ==========================
+node_modules/
+**/node_modules/
 
-# C extensions
-*.o
-*.a
-*.so
-.so
+# Package Managers
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-
-# Virtual environments
-venv/
-env/
-ENV/
-env.bak/
-venv.bak/
-.venv
-
-# Environment variables
+# Environment Variables
 .env
 .env.local
-.env.*.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-.DS_Store
-*.sublime-project
-*.sublime-workspace
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+.venv/
+venv/
+env/
 
-# Node modules
-node_modules/
-npm-debug.log
-yarn-error.log
-.pnpm-debug.log
-
-# Build output
+# Build Outputs
 dist/
 build/
 out/
-.next/
-.nuxt/
 coverage/
-
-# Testing
-.pytest_cache/
-.coverage
-htmlcov/
-.hypothesis/
-
-# Database
-*.db
-*.sqlite
-*.sqlite3
-postgres_data/
-redis_data/
 
 # Logs
 logs/
 *.log
 
-# OS files
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS Files
 .DS_Store
 Thumbs.db
 
+# Temporary Files
+.tmp/
+temp/
+.cache/
+
 # Catalyst
 .catalyst/
-catalyst.lock
 
-# Runtime data
-pids/
-*.pid
-*.seed
 
-# Temporary files
+
+
+# ==========================================
+# Environment Variables
+# ==========================================
+.env
+.env.*
+!.env.example
+
+# ==========================================
+# Catalyst Credentials
+# ==========================================
+credentials.json
+service-account.json
+*.pem
+*.key
+
+# ==========================================
+# React / Vite / Next.js
+# ==========================================
+dist/
+build/
+.next/
+out/
+coverage/
+
+# ==========================================
+# VS Code
+# ==========================================
+.vscode/
+.history/
+
+# ==========================================
+# IntelliJ / JetBrains
+# ==========================================
+.idea/
+*.iml
+
+# ==========================================
+# macOS
+# ==========================================
+.DS_Store
+
+# ==========================================
+# Windows
+# ==========================================
+Thumbs.db
+Desktop.ini
+
+# ==========================================
+# Logs
+# ==========================================
+logs/
+*.log
+
+# ==========================================
+# Temporary Files
+# ==========================================
 tmp/
 temp/
 *.tmp
+*.bak
+*.swp
 
-# Docker
-.docker
-docker-compose.override.yml
+# ==========================================
+# Catalyst
+# ==========================================
+.catalyst/
+.catalystrc.local
+
+# ==========================================
+# ML Models
+# ==========================================
+*.pkl
+*.joblib
+*.h5
+*.onnx
+model_registry/
+
+# ==========================================
+# Database Files
+# ==========================================
+*.db
+*.sqlite
+*.sqlite3
+
+# ==========================================
+# Uploads
+# ==========================================
+uploads/
+evidence/
